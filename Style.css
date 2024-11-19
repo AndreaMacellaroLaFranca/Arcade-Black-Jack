@@ -1,0 +1,102 @@
+body {
+    background-image: url('images/f4ce40ce-0f06-46dc-976b-fcc962c770ff.png');
+        background-size: cover;
+        /* Makes the image cover the entire viewport */
+        background-position: center;
+        /* Centers the image */
+        /* background-repeat: no-repeat; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/*SEZIONE TAVOLI*/
+#playerTable {
+    background-color: #2c6b2f;
+    border: 10px solid #8B4513;
+    border-radius: 15px;
+    padding: 20px;
+    width: 10em;
+    margin-top: 20px;
+}
+
+#dealerTable {
+    background-color: #2c6b2f;
+    border: 10px solid #8B4513;
+    border-radius: 15px;
+    padding: 20px;
+    width: 10em;
+}
+
+/*SEZIONE CARTE*/
+#playerCards {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#dealerCards {
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+}
+
+/*SEZIONE PUNTEGGI*/
+#dealerScore {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: solid black 10px;
+}
+
+#playerScore {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: solid black 10px;
+}
+
+/*SEZIONE DECK*/
+#deck img {
+    width: 100px;
+    height: 140px;
+    position: fixed;
+    top: 100px;
+    right: 10px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+}
+
+/*SEZIONE PULSANTI*/
+button {
+    background-color: lime;
+    border: 5px solid green;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 10px;
+}
+
+#tableflip {
+    background-color: red;
+    border: 5px solid darkred;
+    border-radius: 5px;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
+
+#tableflip:hover {
+    background-color: darkred;
+}
+
+button:hover {
+    background-color: #45a049;
+    transform: scale(1.1);
+    transition-duration: 300ms;
+}
+
+#pScore, #dScore{
+    color: red;
+}
