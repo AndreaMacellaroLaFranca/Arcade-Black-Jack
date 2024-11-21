@@ -18,3 +18,4 @@ function Dealer() {
 Dealer.prototype.addCard = function(card) {
     this.dealerCards.push(card); 
 };
+
