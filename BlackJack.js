@@ -262,7 +262,7 @@ function start() {
             dScore.textContent = `Ho perso! Il mio punteggio ${dealer.dealerScore}`;
             dealerScore.innerHTML = "";
             dealerScore.appendChild(dScore);
-        }else if(player.playerScore<dealer.dealerScore){
+        }else if(player.playerScore<dealer.dealerScore && dealer.dealerScore<=21){
             pScore.textContent = `Hai perso! Il tuo punteggio ${player.playerScore}`;
             playerScore.innerHTML = "";
             playerScore.appendChild(pScore);
