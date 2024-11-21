@@ -1,13 +1,14 @@
 body {
-    background-image: url('images/f4ce40ce-0f06-46dc-976b-fcc962c770ff.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-image: url('images/Image20241120123516.png');
+        background-size: cover;
+        /* Makes the image cover the entire viewport */
+        background-position: center;
+        /* Centers the image */
+        /* background-repeat: no-repeat; */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
 }
 
 /*SEZIONE TAVOLI*/
@@ -43,7 +44,7 @@ body {
 
 /*SEZIONE PUNTEGGI*/
 #dealerScore {
-    color: white;
+    color: red;
     font-size: 24px;
     font-weight: bold;
     border-radius: 5px;
@@ -51,7 +52,7 @@ body {
 }
 
 #playerScore {
-    color: white;
+    color: red;
     font-size: 24px;
     font-weight: bold;
     border-radius: 5px;

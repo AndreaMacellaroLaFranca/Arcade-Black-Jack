@@ -23,5 +23,3 @@ Deck.prototype.draw = function () {
     return this.cards.pop();
 };
 
-
-
