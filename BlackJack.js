@@ -8,7 +8,7 @@ function start() {
     const playerScore = document.getElementById("playerScore");
 
     let player1, dealer1, deck; //il mio "amico" mi ha detto che le variabili devono essere inizializzate a livello globale fuori dagli eventi listener, e nei vari
-    //event listener poi gli assegno agli oggetti stessi; cosi facendo in teoria, ora player1, dealer 1 e deck saranno sempre visti!!
+    //event listener poi gli assegno agli oggetti stessi; cosi facendo in teoria, ora player1, dealer 1 e deck saranno sempre visti!!!
 
     btnStart.addEventListener("click", function () {
         btnStart.disabled = true;
