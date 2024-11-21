@@ -1,24 +1,36 @@
 function start() {
     const btnStart = document.getElementById("start");
     const btnRestart = document.getElementById("restart");
+    const btnHit = document.getElementById("hit");
+    const btnStand = document.getElementById("stand");
     const btnStop = document.getElementById("tableFlip");
     const dealerCards = document.getElementById("dealerCards");
     const playerCards = document.getElementById("playerCards");
     const dealerScore = document.getElementById("dealerScore");
     const playerScore = document.getElementById("playerScore");
 
-    let player1, dealer1, deck; //il mio "amico" mi ha detto che le variabili devono essere inizializzate a livello globale fuori dagli eventi listener, e nei vari
+    let player, dealer, deck; //il mio "amico" mi ha detto che le variabili devono essere inizializzate a livello globale fuori dagli eventi listener, e nei vari
     //event listener poi gli assegno agli oggetti stessi; cosi facendo in teoria, ora player1, dealer 1 e deck saranno sempre visti!!!
+    const pScore = document.createElement("p");
 
     btnStart.addEventListener("click", function () {
+
         btnStart.disabled = true;
+        btnRestart.disabled = true;
+
+        setTimeout(() => {
+            btnRestart.disabled = false;
+        }, 4000);
+        
         setTimeout(() => {
             btnStop.disabled = false;
         }, 3800);
-        player1 = new Player();  
-        dealer1 = new Dealer();  
+
+        player = new Player();  
+        dealer = new Dealer();  
         deck = new Deck();      
         deck.shuffle();
+
         let card1 = deck.draw();
         let img1 = document.createElement("img");
         img1.src = `images/${card1.image}`;
@@ -33,7 +45,7 @@ function start() {
 
         let card4 = deck.draw();
         let img4 = document.createElement("img");
-        img4.src = `images/${card4.image}`;
+        img4.src = `images/Deck-Back.png`;
 
         setTimeout(() => 
             playerCards.appendChild(img1), 500); 
@@ -51,18 +63,18 @@ function start() {
             btnStop.disabled = false, 3700);
 
         setTimeout(() => {
-            dealer1.addCard(card2);
-            dealer1.addCard(card4);
+            dealer.addCard(card2);
+            // dealer1.addCard(card4);
             const dScore = document.createElement("p");
-            dScore.textContent = dealer1.dealerScore;
+            dScore.textContent = dealer.dealerScore;
             dealerScore.appendChild(dScore);
         }, 3800);
 
         setTimeout(() => {
-            player1.addCard(card1);
-            player1.addCard(card3);
+            player.addCard(card1);
+            player.addCard(card3);
             const pScore = document.createElement("p");
-            pScore.textContent = player1.playerScore;
+            pScore.textContent = player.playerScore;
             playerScore.appendChild(pScore);
         }, 3800);
     });
@@ -72,14 +84,14 @@ function start() {
         setTimeout(() => {
             btnStop.disabled = false;
         }, 3800);
-        player1.playerCards = [];
-        dealer1.dealerCards = [];
+        player.playerCards = [];
+        dealer.dealerCards = [];
         playerCards.innerHTML = ""; 
         dealerCards.innerHTML = ""; 
         dealerScore.innerHTML = "";
         playerScore.innerHTML = "";
-        deck = new Deck();      
 
+        deck = new Deck();      
         deck.shuffle();
 
         let card1 = deck.draw();
@@ -96,7 +108,7 @@ function start() {
 
         let card4 = deck.draw();
         let img4 = document.createElement("img");
-        img4.src = `images/${card4.image}`;
+        img4.src = `images/Deck-Back.png`;
 
         setTimeout(() => 
             playerCards.appendChild(img1), 500); 
@@ -111,26 +123,42 @@ function start() {
         setTimeout(() => 
             btnStop.disabled = false, 3700);
         setTimeout(() => {
-            dealer1.addCard(card2);
-            dealer1.addCard(card4);
+            dealer.addCard(card2);
+            // dealer1.addCard(card4);
             const dScore = document.createElement("p");
-            dScore.textContent = dealer1.dealerScore;
+            dScore.textContent = dealer.dealerScore;
             dealerScore.appendChild(dScore);
         }, 3800);
         setTimeout(() => {
-            player1.addCard(card1);
-            player1.addCard(card3);
+            player.addCard(card1);
+            player.addCard(card3);
             const pScore = document.createElement("p");
-            pScore.textContent = player1.playerScore;
+            pScore.textContent = player.playerScore;
             playerScore.appendChild(pScore);
         }, 3800);
         btnStart.disabled = true;
         btnRestart.disabled = true;
     });
 
+    btnHit.addEventListener("click", function () {
+    
+        let card = deck.draw();
+        player.addCard(card);
+        
+        let img = document.createElement("img");
+        img.src = `images/${card.image}`;
+        playerCards.appendChild(img);
+
+        pScore.textContent = player.playerScore;
+        playerScore.innerHTML = "";
+        playerScore.appendChild(pScore);
+        console.log(pScore)
+   
+    });
+
     btnStop.addEventListener("click", function () {
-        player1.playerCards = [];
-        dealer1.dealerCards = [];
+        player.playerCards = [];
+        dealer.dealerCards = [];
         playerCards.innerHTML = ""; 
         dealerCards.innerHTML = ""; 
         dealerScore.innerHTML = "";
