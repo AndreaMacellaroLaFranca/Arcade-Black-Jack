@@ -71,7 +71,7 @@ body {
 
 /*SEZIONE PULSANTI*/
 button {
-    background-color: lime;
+    background-color: rgb(121, 126, 199);
     border: 5px solid green;
     border-radius: 5px;
     padding: 10px 20px;
