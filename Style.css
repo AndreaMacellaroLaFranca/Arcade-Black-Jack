@@ -1,14 +1,13 @@
 body {
     background-image: url('images/f4ce40ce-0f06-46dc-976b-fcc962c770ff.png');
-        background-size: cover;
-        /* Makes the image cover the entire viewport */
-        background-position: center;
-        /* Centers the image */
-        /* background-repeat: no-repeat; */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 /*SEZIONE TAVOLI*/

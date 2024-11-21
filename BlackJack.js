@@ -1,5 +1,4 @@
 function start() {
-    
     const btnStart = document.getElementById("start");
     const btnRestart = document.getElementById("restart");
     const btnHit = document.getElementById("hit");
@@ -9,7 +8,7 @@ function start() {
     const playerCards = document.getElementById("playerCards");
     const dealerScore = document.getElementById("dealerScore");
     const playerScore = document.getElementById("playerScore");
-
+    
     btnStart.addEventListener("click", function () {
         
         let deck = new Deck();
@@ -56,7 +55,7 @@ function start() {
         setTimeout(() => {
             btnStop.disabled = false;
         }, 3700)
-        
+
         setTimeout(() => {
             let totalDealerScore = card2.score + card4.score;
             const dScore = document.createElement("p");
@@ -74,6 +73,9 @@ function start() {
         }, 3800)
 
     });
+
+    console.log(totalDealerScore);
+
 
     btnRestart.addEventListener("click", function () {
 
