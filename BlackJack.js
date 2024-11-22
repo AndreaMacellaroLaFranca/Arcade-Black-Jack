@@ -47,16 +47,17 @@ function start() {
 
         setTimeout(() => {
             dealer.addCard(card2);
-            dScore.textContent = dealer.dealerScore;
+            dScore.textContent = dealer.totalScoreWithAce();
             dealerScore.appendChild(dScore);
         }, 4000);
         setTimeout(() => {
             player.addCard(card1);
             player.addCard(card3);
             const pScore = document.createElement("p");
-            pScore.textContent = player.playerScore;
+            pScore.textContent = player.totalScoreWithAce();
             playerScore.appendChild(pScore);
         }, 4000);
+
     });
 
     btnRestart.addEventListener("click", function () {
@@ -95,65 +96,62 @@ function start() {
 
         setTimeout(() => {
             dealer.addCard(card2);
-            dScore.textContent = dealer.dealerScore;
+            dScore.textContent = dealer.totalScoreWithAce();
             dealerScore.appendChild(dScore);
         }, 4000);
         setTimeout(() => {
             player.addCard(card1);
             player.addCard(card3);
             const pScore = document.createElement("p");
-            pScore.textContent = player.playerScore;
+            pScore.textContent = player.totalScoreWithAce();
             playerScore.appendChild(pScore);
         }, 4000);
     });
-
+        
     //IF 21 DI PRIMA MANO HAI VINTO BRAVO SCEMO E BTNHIT DISABLED (BLACKJACK)
-    //ASSO A 11 SE LO DRAWI HASACE() - +10 if player.score = player.score+10 < 21
 
     btnHit.addEventListener("click", function () {
-        if(player.playerScore<21){
+        if(player.totalScoreWithAce()<21){
         let card = deck.draw();
         player.addCard(card);
         let img = document.createElement("img");
         img.src = `images/${card.image}`;
         playerCards.appendChild(img);
-        pScore.textContent = player.playerScore;
+        pScore.textContent = player.totalScoreWithAce();
         playerScore.innerHTML = "";
         playerScore.appendChild(pScore);
         }
-        if(player.playerScore==21){
+        if(player.totalScoreWithAce()==21){
             btnHit.disabled = true;
             btnStand.disabled = true;
-            pScore.textContent = `Hai fatto ${player.playerScore}! Hai vinto!...forse! `;
+            pScore.textContent = `Hai fatto ${player.totalScoreWithAce()}! Hai vinto!...forse! `;
             playerScore.innerHTML = "";
             playerScore.appendChild(pScore);
             dealerCards.removeChild(img4);
-            btnHit.disabled = true;
-            btnStand.disabled = true;
             let card4 = deck.draw();
             dealer.addCard(card4);
             img4.src = `images/${card4.image}`;
             dealerCards.appendChild(img4);
-            dScore.textContent = dealer.dealerScore;
+            dScore.textContent = dealer.totalScoreWithAce();
             dealerScore.innerHTML = "";
             dealerScore.appendChild(dScore);
             setTimeout(() => {
-                while (dealer.dealerScore<16) {
+                while (dealer.totalScoreWithAce()<16) {
                     let card = deck.draw();
                     dealer.addCard(card);
                     let img = document.createElement("img");
                     img.src = `images/${card.image}`;
                     dealerCards.appendChild(img);
-                    dScore.textContent = dealer.dealerScore;
+                    dScore.textContent = dealer.totalScoreWithAce();
                     dealerScore.innerHTML = "";
                     dealerScore.appendChild(dScore);
                 }   
             }, 1000);
         }
-        if(player.playerScore>21){
+        if(player.totalScoreWithAce()>21){
             btnHit.disabled = true;
             btnStand.disabled = true;
-            pScore.textContent = `Hai sballato! Il tuo punteggio ${player.playerScore} e spera che il dealer sballi a sua volta!`;
+            pScore.textContent = `Hai sballato! Il tuo punteggio ${player.totalScoreWithAce()} e spera che il dealer sballi a sua volta!`;
             playerScore.innerHTML = "";
             playerScore.appendChild(pScore);
             dealerCards.removeChild(img4);
@@ -161,34 +159,34 @@ function start() {
             dealer.addCard(card4);
             img4.src = `images/${card4.image}`;
             dealerCards.appendChild(img4);
-            dScore.textContent = dealer.dealerScore;
+            dScore.textContent = dealer.totalScoreWithAce();
             dealerScore.innerHTML = "";
             dealerScore.appendChild(dScore);
             setTimeout(() => {
-                while (dealer.dealerScore<16) {
+                while (dealer.totalScoreWithAce()<16) {
                     let card = deck.draw();
                     dealer.addCard(card);
                     let img = document.createElement("img");
                     img.src = `images/${card.image}`;
                     dealerCards.appendChild(img);
-                    dScore.textContent = dealer.dealerScore;
+                    dScore.textContent = dealer.totalScoreWithAce();
                     dealerScore.innerHTML = "";
                     dealerScore.appendChild(dScore);
                 }
             }, 1000);
             setTimeout(() => {
-                if(dealer.dealerScore<21 ){
-                    pScore.textContent = `Hai perso! Il tuo punteggio ${player.playerScore}`;
+                if(dealer.totalScoreWithAce()<21 ){
+                    pScore.textContent = `Hai perso! Il tuo punteggio ${player.totalScoreWithAce()}`;
                     playerScore.innerHTML = "";
                     playerScore.appendChild(pScore);
-                    dScore.textContent = `Ho vinto! Il mio punteggio ${dealer.dealerScore}`;
+                    dScore.textContent = `Ho vinto! Il mio punteggio ${dealer.totalScoreWithAce()}`;
                     dealerScore.innerHTML = "";
                     dealerScore.appendChild(dScore);
-                }else if (dealer.dealerScore>21){
-                    pScore.textContent = `Hai pareggiato! Il tuo punteggio ${player.playerScore}`;
+                }else if (dealer.totalScoreWithAce()>21){
+                    pScore.textContent = `Hai pareggiato! Il tuo punteggio ${player.totalScoreWithAce()}`;
                     playerScore.innerHTML = "";
                     playerScore.appendChild(pScore);
-                    dScore.textContent = `Abbiamo pareggiato! Il mio punteggio ${dealer.dealerScore}`;
+                    dScore.textContent = `Abbiamo pareggiato! Il mio punteggio ${dealer.totalScoreWithAce()}`;
                     dealerScore.innerHTML = "";
                     dealerScore.appendChild(dScore);
             }}, 1100);
@@ -203,41 +201,41 @@ function start() {
         dealer.addCard(card4);
         img4.src = `images/${card4.image}`;
         dealerCards.appendChild(img4);
-        dScore.textContent = dealer.dealerScore;
+        dScore.textContent = dealer.totalScoreWithAce();
         dealerScore.innerHTML = "";
         dealerScore.appendChild(dScore);
         setTimeout(() => {
-            while (dealer.dealerScore<16) {
+            while (dealer.totalScoreWithAce()<16) {
                 let card = deck.draw();
                 dealer.addCard(card);
                 let img = document.createElement("img");
                 img.src = `images/${card.image}`;
                 dealerCards.appendChild(img);
-                dScore.textContent = dealer.dealerScore;
+                dScore.textContent = dealer.totalScoreWithAce();
                 dealerScore.innerHTML = "";
                 dealerScore.appendChild(dScore);
             }
         }, 1000);
         setTimeout(() => {
-        if(player.playerScore>dealer.dealerScore && player.playerScore<=21){
-            pScore.textContent = `Hai vinto! Il tuo punteggio ${player.playerScore}`;
+        if(player.totalScoreWithAce()>dealer.totalScoreWithAce() && player.totalScoreWithAce()<=21){
+            pScore.textContent = `Hai vinto! Il tuo punteggio ${player.totalScoreWithAce()}`;
             playerScore.innerHTML = "";
             playerScore.appendChild(pScore);
-            dScore.textContent = `Ho perso! Il mio punteggio ${dealer.dealerScore}`;
+            dScore.textContent = `Ho perso! Il mio punteggio ${dealer.totalScoreWithAce()}`;
             dealerScore.innerHTML = "";
             dealerScore.appendChild(dScore);
-        }else if(player.playerScore<dealer.dealerScore && dealer.dealerScore<=21){
-            pScore.textContent = `Hai perso! Il tuo punteggio ${player.playerScore}`;
+        }else if(player.totalScoreWithAce()<dealer.totalScoreWithAce() && dealer.totalScoreWithAce()<=21){
+            pScore.textContent = `Hai perso! Il tuo punteggio ${player.totalScoreWithAce()}`;
             playerScore.innerHTML = "";
             playerScore.appendChild(pScore);
-            dScore.textContent = `Ho vinto! Il mio punteggio ${dealer.dealerScore}`;
+            dScore.textContent = `Ho vinto! Il mio punteggio ${dealer.totalScoreWithAce()}`;
             dealerScore.innerHTML = "";
             dealerScore.appendChild(dScore);
         }else{
-            pScore.textContent = `Hai pareggiato! Il tuo punteggio ${player.playerScore}`;
+            pScore.textContent = `Hai pareggiato! Il tuo punteggio ${player.totalScoreWithAce()}`;
             playerScore.innerHTML = "";
             playerScore.appendChild(pScore);
-            dScore.textContent = `Abbiamo pareggiato! Il mio punteggio ${dealer.dealerScore}`;
+            dScore.textContent = `Abbiamo pareggiato! Il mio punteggio ${dealer.totalScoreWithAce()}`;
             dealerScore.innerHTML = "";
             dealerScore.appendChild(dScore);
         }}, 1100);
