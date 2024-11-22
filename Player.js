@@ -6,7 +6,6 @@ function Player() {
         }
     });
 }
-
 Player.prototype.addCard = function (card) {
     this.playerCards.push(card);
-};
+}

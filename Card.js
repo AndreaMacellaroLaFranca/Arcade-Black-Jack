@@ -15,8 +15,7 @@ function Card(name, suit, image) {
         default:
             this.score = parseInt(name);
     }
-};
-
+}
 Card.prototype.toString = function () {
     return `${this.name} of ${this.suit}`;
-};
+}

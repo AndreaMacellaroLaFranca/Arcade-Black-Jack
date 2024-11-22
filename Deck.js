@@ -10,16 +10,13 @@ function Deck() {
         this.cards.push(new Card('Q', suit, `Q-${suit}.png`));
         this.cards.push(new Card('K', suit, `K-${suit}.png`));
     };
-};
-
+}
 Deck.prototype.shuffle = function (cards) {
     for (let i = 0; i < this.cards.length; i++) {
         let shuffle = Math.floor(Math.random() * (this.cards.length));
         [this.cards[i], this.cards[shuffle]] = [this.cards[shuffle], this.cards[i]];
     };
-};
-
+}
 Deck.prototype.draw = function () {
     return this.cards.pop();
-};
-
+}
