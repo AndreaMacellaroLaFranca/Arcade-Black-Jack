@@ -9,12 +9,8 @@ function start() {
     const dealerScore = document.getElementById("dealerScore");
     const playerScore = document.getElementById("playerScore");
     let player, dealer, deck;
-    var pScore = document.createElement("p");
-    var dScore = document.createElement("p");
-    var img1 = document.createElement("img1");
-    var img2 = document.createElement("img2");
-    var img3 = document.createElement("img3");
-    var img4 = document.createElement("img4");
+    let pScore = document.createElement("p");
+    let dScore = document.createElement("p");
     
     btnStart.addEventListener("click", function () {
         btnStart.disabled = true;
@@ -27,20 +23,24 @@ function start() {
 
         let card1 = deck.draw();
         img1 = document.createElement("img"); //PLAYER
+        img1.id ="img1"
         img1.src = `images/${card1.image}`;
         setTimeout(() => 
             playerCards.appendChild(img1), 1000); 
         let card2 = deck.draw();
         img2 = document.createElement("img"); //DEALER
+        img2.id = "img2"
         img2.src = `images/${card2.image}`;
         setTimeout(() => 
             dealerCards.appendChild(img2), 2000); 
         let card3 = deck.draw();
         img3 = document.createElement("img"); //PLAYER
+        img3.id = "img3"
         img3.src = `images/${card3.image}`;
         setTimeout(() => 
             playerCards.appendChild(img3), 3000); 
         img4 = document.createElement("img"); //DEALER BACK
+        img4.id = "img4"
         img4.src = `images/Deck-Back.png`;
         setTimeout(() => 
             dealerCards.appendChild(img4), 4000);
@@ -53,7 +53,6 @@ function start() {
         setTimeout(() => {
             player.addCard(card1);
             player.addCard(card3);
-            const pScore = document.createElement("p");
             pScore.textContent = player.totalScoreWithAce();
             playerScore.appendChild(pScore);
         }, 4000);
@@ -102,7 +101,6 @@ function start() {
         setTimeout(() => {
             player.addCard(card1);
             player.addCard(card3);
-            const pScore = document.createElement("p");
             pScore.textContent = player.totalScoreWithAce();
             playerScore.appendChild(pScore);
         }, 4000);

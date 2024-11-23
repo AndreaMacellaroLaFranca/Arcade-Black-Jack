@@ -1,102 +1,127 @@
+/* Reset default margins and prevent scrolling */
 body {
-    background-image: url('images/f4ce40ce-0f06-46dc-976b-fcc962c770ff.png');
-        background-size: cover;
-        /* Makes the image cover the entire viewport */
-        background-position: center;
-        /* Centers the image */
-        /* background-repeat: no-repeat; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
 }
 
-/*SEZIONE TAVOLI*/
-#playerTable {
-    background-color: #2c6b2f;
-    border: 10px solid #8B4513;
-    border-radius: 15px;
-    padding: 20px;
-    width: 10em;
-    margin-top: 20px;
+/* Fullscreen canvas as the background */
+#gameCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    /* Behind other elements */
+    display: block;
 }
 
-#dealerTable {
-    background-color: #2c6b2f;
-    border: 10px solid #8B4513;
-    border-radius: 15px;
-    padding: 20px;
-    width: 10em;
+/* Dealer and player sections container */
+section {
+    position: relative;
+    /* Stack on top of the canvas */
+    z-index: 2;
+    text-align: center;
+    color: white;
+    /* Ensure text contrasts with the canvas background */
 }
 
-/*SEZIONE CARTE*/
-#playerCards {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-#dealerCards {
-    display: flex;
-    justify-content: space-around;
-    width: 50%;
-}
-
-/*SEZIONE PUNTEGGI*/
-#dealerScore {
-    color: red;
-    font-size: 24px;
-    font-weight: bold;
-    border-radius: 5px;
-    border: solid black 10px;
-}
-
-#playerScore {
-    color: red;
-    font-size: 24px;
-    font-weight: bold;
-    border-radius: 5px;
-    border: solid black 10px;
-}
-
-/*SEZIONE DECK*/
-#deck img {
-    width: 100px;
-    height: 140px;
-    position: fixed;
-    top: 100px;
-    right: 10px;
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
-}
-
-/*SEZIONE PULSANTI*/
+/* Buttons styling */
 button {
-    background-color: green;
-    border: 5px solid green;
-    border-radius: 5px;
+    position: relative;
+    z-index: 3;
+    /* Ensure buttons are above everything else */
     padding: 10px 20px;
+    font-size: 14px;
     margin: 10px;
-}
-
-#tableflip {
-    background-color: red;
-    border: 5px solid darkred;
+    background-color: #236421;
+    color: white;
+    border: none;
     border-radius: 5px;
-    position: fixed;
-    top: 10px;
-    right: 10px;
+    cursor: pointer;
 }
 
-#tableflip:hover {
-    background-color: darkred;
+#hitStand{
+    position: fixed;
+    bottom: 180px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    font-size: 14px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 3;
 }
+
 
 button:hover {
-    background-color: #45a049;
-    transform: scale(1.1);
-    transition-duration: 300ms;
+    background-color:  #9b2c2c;
 }
 
-#pScore, #dScore{
-    color: red;
+button:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+}
+
+/* Card areas */
+#dealerTable,
+#playerTable {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+}
+
+/* Score areas */
+aside {
+    font-size: 18px;
+    margin-left: 10px;
+    color: yellow;
+}
+
+/* Deck image styling */
+#deck{
+    /* width: 100px; */
+
+    
+    position: relative;
+    top: -330px;
+    right: -800px;
+}
+
+/* Center the STOP button */
+#tableFlip {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+}
+
+#dealerTable{
+    position: relative;
+    top: -20px;
+}
+
+#playerTable{
+    position: relative;
+    bottom: -110px;
+}
+
+#dealerScore{
+position: relative;
+    
+    /* Adjust as necessary */
+    text-align: center;
+    padding: 0%;
+    
+}
+
+img{
+    position: static;
+    padding: 10px;
 }
