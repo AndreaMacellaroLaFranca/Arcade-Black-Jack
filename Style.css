@@ -1,46 +1,27 @@
-/* Reset default margins and prevent scrolling */
-body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    font-family: Arial, sans-serif;
-}
-
-/* Fullscreen canvas as the background */
 #gameCanvas {
     position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 1;
-    /* Behind other elements */
-    display: block;
 }
 
-/* Dealer and player sections container */
 section {
     position: relative;
-    /* Stack on top of the canvas */
     z-index: 2;
     text-align: center;
     color: white;
-    /* Ensure text contrasts with the canvas background */
 }
 
-/* Buttons styling */
 button {
     position: relative;
     z-index: 3;
-    /* Ensure buttons are above everything else */
     padding: 10px 20px;
-    font-size: 14px;
     margin: 10px;
-    background-color: #236421;
+    background-color: darkgreen;
     color: white;
-    border: none;
     border-radius: 5px;
-    cursor: pointer;
+    transition-duration: 0.3s;
 }
 
 #hitStand{
@@ -48,15 +29,9 @@ button {
     bottom: 180px;
     left: 50%;
     transform: translateX(-50%);
-    padding: 10px 20px;
-    font-size: 14px;
     color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
     z-index: 3;
 }
-
 
 button:hover {
     background-color:  #9b2c2c;
@@ -64,36 +39,28 @@ button:hover {
 
 button:disabled {
     background-color: #bdc3c7;
-    cursor: not-allowed;
 }
 
-/* Card areas */
 #dealerTable,
 #playerTable {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px auto;
+    height: 190px;
 }
 
-/* Score areas */
 aside {
     font-size: 18px;
     margin-left: 10px;
     color: yellow;
 }
 
-/* Deck image styling */
 #deck{
-    /* width: 100px; */
-
-    
     position: relative;
     top: -330px;
     right: -800px;
 }
 
-/* Center the STOP button */
 #tableFlip {
     position: absolute;
     bottom: 20px;
@@ -113,12 +80,9 @@ aside {
 }
 
 #dealerScore{
-position: relative;
-    
-    /* Adjust as necessary */
+    position: relative;
     text-align: center;
     padding: 0%;
-    
 }
 
 img{
