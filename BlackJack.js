@@ -57,19 +57,50 @@ function start() {
             playerScore.appendChild(pScore);
         }, 4000);
 
+        setTimeout(() => {
+            if (player.totalScoreWithAce() === 21) {
+                btnHit.disabled = true;
+                btnStand.disabled = true;
+                pScore.textContent = `Hai fatto BlackJack <3 `;
+                playerScore.innerHTML = "";
+                playerScore.appendChild(pScore);
+                dealerCards.removeChild(img4);
+                let card4 = deck.draw();
+                dealer.addCard(card4);
+                img4.src = `images/${card4.image}`;
+                dealerCards.appendChild(img4);
+
+                dScore.textContent = dealer.totalScoreWithAce();
+                dealerScore.innerHTML = "";
+                dealerScore.appendChild(dScore);
+
+                setTimeout(() => {
+                    while (dealer.totalScoreWithAce() < 16) {
+                        let card = deck.draw();
+                        dealer.addCard(card);
+                        let img = document.createElement("img");
+                        img.src = `images/${card.image}`;
+                        dealerCards.appendChild(img);
+                        dScore.textContent = dealer.totalScoreWithAce();
+                        dealerScore.innerHTML = "";
+                        dealerScore.appendChild(dScore);
+                    }
+                }, 1000);
+            }
+        }, 4001);
     });
 
     btnRestart.addEventListener("click", function () {
         deactivateBtn(btnHit, btnStop, btnStand, btnRestart);
         delayBtn(btnHit, btnStop, btnStand, btnRestart);
         
-        player.playerCards = [];
-        dealer.dealerCards = [];
         playerCards.innerHTML = ""; 
         dealerCards.innerHTML = ""; 
         dealerScore.innerHTML = "";
         playerScore.innerHTML = "";
 
+        player = new Player();  
+        dealer = new Dealer();
         deck = new Deck();      
         deck.shuffle();
 
@@ -104,12 +135,41 @@ function start() {
             pScore.textContent = player.totalScoreWithAce();
             playerScore.appendChild(pScore);
         }, 4000);
+
+        setTimeout(() => {
+            if (player.totalScoreWithAce() === 21) {
+                btnHit.disabled = true;
+                btnStand.disabled = true;
+                pScore.textContent = `Hai fatto BlackJack <3 `;
+                playerScore.innerHTML = "";
+                playerScore.appendChild(pScore);
+                dealerCards.removeChild(img4);
+                let card4 = deck.draw();
+                dealer.addCard(card4);
+                img4.src = `images/${card4.image}`;
+                dealerCards.appendChild(img4);
+
+                dScore.textContent = dealer.totalScoreWithAce();
+                dealerScore.innerHTML = "";
+                dealerScore.appendChild(dScore);
+
+                setTimeout(() => {
+                    while (dealer.totalScoreWithAce() < 16) {
+                        let card = deck.draw();
+                        dealer.addCard(card);
+                        let img = document.createElement("img");
+                        img.src = `images/${card.image}`;
+                        dealerCards.appendChild(img);
+                        dScore.textContent = dealer.totalScoreWithAce();
+                        dealerScore.innerHTML = "";
+                        dealerScore.appendChild(dScore);
+                    }
+                }, 1000);
+            }
+        }, 4001);
     });
-        
-    //IF 21 DI PRIMA MANO HAI VINTO BRAVO SCEMO E BTNHIT DISABLED (BLACKJACK)
 
     btnHit.addEventListener("click", function () {
-        if(player.totalScoreWithAce()<21){
         let card = deck.draw();
         player.addCard(card);
         let img = document.createElement("img");
@@ -118,7 +178,7 @@ function start() {
         pScore.textContent = player.totalScoreWithAce();
         playerScore.innerHTML = "";
         playerScore.appendChild(pScore);
-        }
+        
         if(player.totalScoreWithAce()==21){
             btnHit.disabled = true;
             btnStand.disabled = true;
@@ -133,8 +193,8 @@ function start() {
             dScore.textContent = dealer.totalScoreWithAce();
             dealerScore.innerHTML = "";
             dealerScore.appendChild(dScore);
-            setTimeout(() => {
-                while (dealer.totalScoreWithAce()<16) {
+            while (dealer.totalScoreWithAce() < 16) {
+                setTimeout(() => {
                     let card = deck.draw();
                     dealer.addCard(card);
                     let img = document.createElement("img");
@@ -143,8 +203,8 @@ function start() {
                     dScore.textContent = dealer.totalScoreWithAce();
                     dealerScore.innerHTML = "";
                     dealerScore.appendChild(dScore);
-                }   
-            }, 1000);
+                }, 1000); 
+            }
         }
         if(player.totalScoreWithAce()>21){
             btnHit.disabled = true;
@@ -160,8 +220,8 @@ function start() {
             dScore.textContent = dealer.totalScoreWithAce();
             dealerScore.innerHTML = "";
             dealerScore.appendChild(dScore);
-            setTimeout(() => {
-                while (dealer.totalScoreWithAce()<16) {
+            while (dealer.totalScoreWithAce() < 16) {
+                setTimeout(() => {
                     let card = deck.draw();
                     dealer.addCard(card);
                     let img = document.createElement("img");
@@ -170,10 +230,10 @@ function start() {
                     dScore.textContent = dealer.totalScoreWithAce();
                     dealerScore.innerHTML = "";
                     dealerScore.appendChild(dScore);
-                }
-            }, 1000);
+                }, 1000);
+            }
             setTimeout(() => {
-                if(dealer.totalScoreWithAce()<21 ){
+                if(dealer.totalScoreWithAce()<21){
                     pScore.textContent = `Hai perso! Il tuo punteggio ${player.totalScoreWithAce()}`;
                     playerScore.innerHTML = "";
                     playerScore.appendChild(pScore);
@@ -189,8 +249,8 @@ function start() {
                     dealerScore.appendChild(dScore);
             }}, 1100);
         }
-        });
-
+    });
+    
     btnStand.addEventListener("click", function(){
         dealerCards.removeChild(img4);
         btnHit.disabled = true;
@@ -202,8 +262,8 @@ function start() {
         dScore.textContent = dealer.totalScoreWithAce();
         dealerScore.innerHTML = "";
         dealerScore.appendChild(dScore);
-        setTimeout(() => {
-            while (dealer.totalScoreWithAce()<16) {
+        while (dealer.totalScoreWithAce() < 16) {
+            setTimeout(() => {
                 let card = deck.draw();
                 dealer.addCard(card);
                 let img = document.createElement("img");
@@ -212,36 +272,34 @@ function start() {
                 dScore.textContent = dealer.totalScoreWithAce();
                 dealerScore.innerHTML = "";
                 dealerScore.appendChild(dScore);
-            }
-        }, 1000);
+            }, 1000);
+        }
         setTimeout(() => {
-        if(player.totalScoreWithAce()>dealer.totalScoreWithAce() && player.totalScoreWithAce()<=21){
-            pScore.textContent = `Hai vinto! Il tuo punteggio ${player.totalScoreWithAce()}`;
-            playerScore.innerHTML = "";
-            playerScore.appendChild(pScore);
-            dScore.textContent = `Ho perso! Il mio punteggio ${dealer.totalScoreWithAce()}`;
-            dealerScore.innerHTML = "";
-            dealerScore.appendChild(dScore);
-        }else if(player.totalScoreWithAce()<dealer.totalScoreWithAce() && dealer.totalScoreWithAce()<=21){
-            pScore.textContent = `Hai perso! Il tuo punteggio ${player.totalScoreWithAce()}`;
-            playerScore.innerHTML = "";
-            playerScore.appendChild(pScore);
-            dScore.textContent = `Ho vinto! Il mio punteggio ${dealer.totalScoreWithAce()}`;
-            dealerScore.innerHTML = "";
-            dealerScore.appendChild(dScore);
-        }else{
-            pScore.textContent = `Hai pareggiato! Il tuo punteggio ${player.totalScoreWithAce()}`;
-            playerScore.innerHTML = "";
-            playerScore.appendChild(pScore);
-            dScore.textContent = `Abbiamo pareggiato! Il mio punteggio ${dealer.totalScoreWithAce()}`;
-            dealerScore.innerHTML = "";
-            dealerScore.appendChild(dScore);
+            if(player.totalScoreWithAce()>dealer.totalScoreWithAce() && player.totalScoreWithAce()<=21){
+                pScore.textContent = `Hai vinto! Il tuo punteggio ${player.totalScoreWithAce()}`;
+                playerScore.innerHTML = "";
+                playerScore.appendChild(pScore);
+                dScore.textContent = `Ho perso! Il mio punteggio ${dealer.totalScoreWithAce()}`;
+                dealerScore.innerHTML = "";
+                dealerScore.appendChild(dScore);
+            }else if(player.totalScoreWithAce()<dealer.totalScoreWithAce() && dealer.totalScoreWithAce()<=21){
+                pScore.textContent = `Hai perso! Il tuo punteggio ${player.totalScoreWithAce()}`;
+                playerScore.innerHTML = "";
+                playerScore.appendChild(pScore);
+                dScore.textContent = `Ho vinto! Il mio punteggio ${dealer.totalScoreWithAce()}`;
+                dealerScore.innerHTML = "";
+                dealerScore.appendChild(dScore);
+            }else{
+                pScore.textContent = `Hai pareggiato! Il tuo punteggio ${player.totalScoreWithAce()}`;
+                playerScore.innerHTML = "";
+                playerScore.appendChild(pScore);
+                dScore.textContent = `Abbiamo pareggiato! Il mio punteggio ${dealer.totalScoreWithAce()}`;
+                dealerScore.innerHTML = "";
+                dealerScore.appendChild(dScore);
         }}, 1100);
     });
     
     btnStop.addEventListener("click", function () {
-        player.playerCards = [];
-        dealer.dealerCards = [];
         playerCards.innerHTML = ""; 
         dealerCards.innerHTML = ""; 
         dealerScore.innerHTML = "";

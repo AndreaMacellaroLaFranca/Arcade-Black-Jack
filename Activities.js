@@ -12,3 +12,4 @@ function deactivateBtn(btnHit, btnStop, btnStand, btnRestart){
     btnStand.disabled = true;
     btnRestart.disabled = true;
 }
+
