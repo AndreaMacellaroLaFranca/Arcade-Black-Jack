@@ -12,8 +12,11 @@ function start() {
     let pScore = document.createElement("p");
     let dScore = document.createElement("p");
     let audio = document.getElementById("audio");
-    
+    let audioClick = document.getElementById("audio1");
+    let music = document.getElementById("audio2");
+    music.volume -=0.9;
     btnStart.addEventListener("click", function () {
+        audioClick.play();
         btnStart.disabled = true;
         delayBtn(btnHit, btnStop, btnStand, btnRestart);
 
@@ -96,6 +99,8 @@ function start() {
     });
 
     btnRestart.addEventListener("click", function () {
+        audioClick.play();
+        audio.pause();
         deactivateBtn(btnHit, btnStop, btnStand, btnRestart);
         delayBtn(btnHit, btnStop, btnStand, btnRestart);
         
@@ -182,6 +187,7 @@ function start() {
     });
 
     btnHit.addEventListener("click", function () {
+        audioClick.play();
         let card = deck.draw();
         player.addCard(card);
         let img = document.createElement("img");
@@ -274,6 +280,7 @@ function start() {
     });
     
     btnStand.addEventListener("click", function(){
+        audioClick.play();
         dealerCards.removeChild(img4);
         btnHit.disabled = true;
         btnStand.disabled = true;
@@ -321,6 +328,8 @@ function start() {
     });
     
     btnStop.addEventListener("click", function () {
+        audioClick.play();
+        audio.pause();
         playerCards.innerHTML = ""; 
         dealerCards.innerHTML = ""; 
         dealerScore.innerHTML = "";
