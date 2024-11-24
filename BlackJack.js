@@ -74,8 +74,8 @@ function start() {
                 dealerScore.innerHTML = "";
                 dealerScore.appendChild(dScore);
 
+                setTimeout(() => {
                 while (dealer.totalScoreWithAce() < 16) {
-                    setTimeout(() => {
                         let card = deck.draw();
                         dealer.addCard(card);
                         let img = document.createElement("img");
@@ -84,8 +84,7 @@ function start() {
                         dScore.textContent = dealer.totalScoreWithAce();
                         dealerScore.innerHTML = "";
                         dealerScore.appendChild(dScore);
-                    }, 1000); 
-                }
+                }}, 1000);
             }
         }, 4001);
     });
@@ -152,9 +151,8 @@ function start() {
                 dScore.textContent = dealer.totalScoreWithAce();
                 dealerScore.innerHTML = "";
                 dealerScore.appendChild(dScore);
-
+                setTimeout(() => {
                 while (dealer.totalScoreWithAce() < 16) {
-                    setTimeout(() => {
                         let card = deck.draw();
                         dealer.addCard(card);
                         let img = document.createElement("img");
@@ -163,8 +161,7 @@ function start() {
                         dScore.textContent = dealer.totalScoreWithAce();
                         dealerScore.innerHTML = "";
                         dealerScore.appendChild(dScore);
-                    }, 1000); 
-                }
+                }}, 1000);
             }
         }, 4001);
     });
@@ -193,8 +190,8 @@ function start() {
             dScore.textContent = dealer.totalScoreWithAce();
             dealerScore.innerHTML = "";
             dealerScore.appendChild(dScore);
+            setTimeout(() => {
             while (dealer.totalScoreWithAce() < 16) {
-                setTimeout(() => {
                     let card = deck.draw();
                     dealer.addCard(card);
                     let img = document.createElement("img");
@@ -203,8 +200,7 @@ function start() {
                     dScore.textContent = dealer.totalScoreWithAce();
                     dealerScore.innerHTML = "";
                     dealerScore.appendChild(dScore);
-                }, 1000); 
-            }
+            }}, 1000);
         }
         if(player.totalScoreWithAce()>21){
             btnHit.disabled = true;
@@ -220,8 +216,8 @@ function start() {
             dScore.textContent = dealer.totalScoreWithAce();
             dealerScore.innerHTML = "";
             dealerScore.appendChild(dScore);
-            while (dealer.totalScoreWithAce() < 16) {
-                setTimeout(() => {
+            setTimeout(() => {
+                while (dealer.totalScoreWithAce() < 16) {
                     let card = deck.draw();
                     dealer.addCard(card);
                     let img = document.createElement("img");
@@ -230,8 +226,7 @@ function start() {
                     dScore.textContent = dealer.totalScoreWithAce();
                     dealerScore.innerHTML = "";
                     dealerScore.appendChild(dScore);
-                }, 1000);
-            }
+            }}, 1000);
             setTimeout(() => {
                 if(dealer.totalScoreWithAce()<21){
                     pScore.textContent = `Hai perso! Il tuo punteggio ${player.totalScoreWithAce()}`;
@@ -263,7 +258,6 @@ function start() {
         dealerScore.innerHTML = "";
         dealerScore.appendChild(dScore);
         while (dealer.totalScoreWithAce() < 16) {
-            setTimeout(() => {
                 let card = deck.draw();
                 dealer.addCard(card);
                 let img = document.createElement("img");
@@ -272,7 +266,6 @@ function start() {
                 dScore.textContent = dealer.totalScoreWithAce();
                 dealerScore.innerHTML = "";
                 dealerScore.appendChild(dScore);
-            }, 1000);
         }
         setTimeout(() => {
             if(player.totalScoreWithAce()>dealer.totalScoreWithAce() && player.totalScoreWithAce()<=21){
