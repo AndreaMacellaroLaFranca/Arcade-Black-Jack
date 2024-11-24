@@ -56,12 +56,12 @@ function start() {
             pScore.textContent = player.totalScoreWithAce();
             playerScore.appendChild(pScore);
         }, 4000);
-
+        
         setTimeout(() => {
             if (player.totalScoreWithAce() === 21) {
                 btnHit.disabled = true;
                 btnStand.disabled = true;
-                pScore.textContent = `Hai fatto BlackJack <3 `;
+                pScore.textContent = `BlackJack <3 `;
                 playerScore.innerHTML = "";
                 playerScore.appendChild(pScore);
                 dealerCards.removeChild(img4);
@@ -73,18 +73,23 @@ function start() {
                 dScore.textContent = dealer.totalScoreWithAce();
                 dealerScore.innerHTML = "";
                 dealerScore.appendChild(dScore);
-
                 setTimeout(() => {
-                while (dealer.totalScoreWithAce() < 16) {
-                        let card = deck.draw();
-                        dealer.addCard(card);
-                        let img = document.createElement("img");
-                        img.src = `images/${card.image}`;
-                        dealerCards.appendChild(img);
-                        dScore.textContent = dealer.totalScoreWithAce();
+                        if(dealer.totalScoreWithAce() === 21){
+                            dScore.textContent = `BlackJack Draw! `;
+                            pScore.textContent = 'Blackjack Draw <3';
+                            dealerScore.innerHTML = "";
+                            playerScore.innerHTML="";
+                            playerScore.appendChild(pScore);
+                            dealerScore.appendChild(dScore);
+                        } else{
+                        dScore.textContent = `I'm gay...`;
+                        pScore.textContent = 'Blackjack Bitch!';
                         dealerScore.innerHTML = "";
+                        playerScore.innerHTML="";
+                        playerScore.appendChild(pScore);
                         dealerScore.appendChild(dScore);
-                }}, 1000);
+                        }
+                }, 1000);
             }
         }, 4001);
     });
@@ -139,7 +144,7 @@ function start() {
             if (player.totalScoreWithAce() === 21) {
                 btnHit.disabled = true;
                 btnStand.disabled = true;
-                pScore.textContent = `Hai fatto BlackJack <3 `;
+                pScore.textContent = `BlackJack <3 `;
                 playerScore.innerHTML = "";
                 playerScore.appendChild(pScore);
                 dealerCards.removeChild(img4);
@@ -151,17 +156,25 @@ function start() {
                 dScore.textContent = dealer.totalScoreWithAce();
                 dealerScore.innerHTML = "";
                 dealerScore.appendChild(dScore);
+            
                 setTimeout(() => {
-                while (dealer.totalScoreWithAce() < 16) {
-                        let card = deck.draw();
-                        dealer.addCard(card);
-                        let img = document.createElement("img");
-                        img.src = `images/${card.image}`;
-                        dealerCards.appendChild(img);
-                        dScore.textContent = dealer.totalScoreWithAce();
+                    if(dealer.totalScoreWithAce() === 21){
+                        dScore.textContent = `BlackJack Draw! `;
+                        pScore.textContent = 'Blackjack Draw <3';
                         dealerScore.innerHTML = "";
+                        playerScore.innerHTML="";
+                        playerScore.appendChild(pScore);
                         dealerScore.appendChild(dScore);
-                }}, 1000);
+                    } else{
+                    dScore.textContent = `I'm gay...`;
+                    pScore.textContent = 'Blackjack Bitch!';
+                    dealerScore.innerHTML = "";
+                    playerScore.innerHTML="";
+                    playerScore.appendChild(pScore);
+                    dealerScore.appendChild(dScore);
+                    }
+            }, 1000);
+                
             }
         }, 4001);
     });
