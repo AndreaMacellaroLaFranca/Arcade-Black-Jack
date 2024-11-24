@@ -21,4 +21,4 @@ Dealer.prototype.totalScoreWithAce = function(){
             totalScore+=10;
         }
     return totalScore;
-    }
+}

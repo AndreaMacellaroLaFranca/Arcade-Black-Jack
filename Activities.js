@@ -4,8 +4,8 @@ function delayBtn(btnHit, btnStop, btnStand, btnRestart){
         btnStop.disabled = false;
         btnStand.disabled = false;
         btnRestart.disabled = false;
-}, 4000);}
-
+    }, 4000);
+}
 function deactivateBtn(btnHit, btnStop, btnStand, btnRestart){
     btnHit.disabled = true;
     btnStop.disabled = true;

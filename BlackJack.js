@@ -74,8 +74,8 @@ function start() {
                 dealerScore.innerHTML = "";
                 dealerScore.appendChild(dScore);
 
-                setTimeout(() => {
-                    while (dealer.totalScoreWithAce() < 16) {
+                while (dealer.totalScoreWithAce() < 16) {
+                    setTimeout(() => {
                         let card = deck.draw();
                         dealer.addCard(card);
                         let img = document.createElement("img");
@@ -84,8 +84,8 @@ function start() {
                         dScore.textContent = dealer.totalScoreWithAce();
                         dealerScore.innerHTML = "";
                         dealerScore.appendChild(dScore);
-                    }
-                }, 1000);
+                    }, 1000); 
+                }
             }
         }, 4001);
     });
@@ -153,8 +153,8 @@ function start() {
                 dealerScore.innerHTML = "";
                 dealerScore.appendChild(dScore);
 
-                setTimeout(() => {
-                    while (dealer.totalScoreWithAce() < 16) {
+                while (dealer.totalScoreWithAce() < 16) {
+                    setTimeout(() => {
                         let card = deck.draw();
                         dealer.addCard(card);
                         let img = document.createElement("img");
@@ -163,8 +163,8 @@ function start() {
                         dScore.textContent = dealer.totalScoreWithAce();
                         dealerScore.innerHTML = "";
                         dealerScore.appendChild(dScore);
-                    }
-                }, 1000);
+                    }, 1000); 
+                }
             }
         }, 4001);
     });
@@ -296,7 +296,7 @@ function start() {
                 dScore.textContent = `Abbiamo pareggiato! Il mio punteggio ${dealer.totalScoreWithAce()}`;
                 dealerScore.innerHTML = "";
                 dealerScore.appendChild(dScore);
-        }}, 1100);
+        }}, 1000);
     });
     
     btnStop.addEventListener("click", function () {
