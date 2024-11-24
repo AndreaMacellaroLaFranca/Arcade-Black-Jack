@@ -11,6 +11,7 @@ function start() {
     let player, dealer, deck;
     let pScore = document.createElement("p");
     let dScore = document.createElement("p");
+    let audio = document.getElementById("audio");
     
     btnStart.addEventListener("click", function () {
         btnStart.disabled = true;
@@ -44,7 +45,6 @@ function start() {
         img4.src = `images/Deck-Back.png`;
         setTimeout(() => 
             dealerCards.appendChild(img4), 4000);
-
         setTimeout(() => {
             dealer.addCard(card2);
             dScore.textContent = dealer.totalScoreWithAce();
@@ -61,7 +61,7 @@ function start() {
             if (player.totalScoreWithAce() === 21) {
                 btnHit.disabled = true;
                 btnStand.disabled = true;
-                pScore.textContent = `BlackJack <3 `;
+                pScore.textContent = `BlackJack <3`;
                 playerScore.innerHTML = "";
                 playerScore.appendChild(pScore);
                 dealerCards.removeChild(img4);
@@ -75,17 +75,18 @@ function start() {
                 dealerScore.appendChild(dScore);
                 setTimeout(() => {
                         if(dealer.totalScoreWithAce() === 21){
-                            dScore.textContent = `BlackJack Draw! `;
-                            pScore.textContent = 'Blackjack Draw <3';
+                            dScore.textContent = `BlackJack Draw!`;
+                            pScore.textContent = 'Blackjack Draw...';
                             dealerScore.innerHTML = "";
                             playerScore.innerHTML="";
                             playerScore.appendChild(pScore);
                             dealerScore.appendChild(dScore);
-                        } else{
-                        dScore.textContent = `I'm gay...`;
+                        }else{
+                        audio.play();
+                        dScore.textContent = `Brother ew`;
                         pScore.textContent = 'Blackjack Bitch!';
                         dealerScore.innerHTML = "";
-                        playerScore.innerHTML="";
+                        playerScore.innerHTML = "";
                         playerScore.appendChild(pScore);
                         dealerScore.appendChild(dScore);
                         }
@@ -159,17 +160,18 @@ function start() {
             
                 setTimeout(() => {
                     if(dealer.totalScoreWithAce() === 21){
-                        dScore.textContent = `BlackJack Draw! `;
-                        pScore.textContent = 'Blackjack Draw <3';
+                        dScore.textContent = `BlackJack Draw!`;
+                        pScore.textContent = 'Blackjack Draw...';
                         dealerScore.innerHTML = "";
-                        playerScore.innerHTML="";
+                        playerScore.innerHTML = "";
                         playerScore.appendChild(pScore);
                         dealerScore.appendChild(dScore);
-                    } else{
-                    dScore.textContent = `I'm gay...`;
+                    }else{
+                    audio.play();
+                    dScore.textContent = `Brother ew`;
                     pScore.textContent = 'Blackjack Bitch!';
                     dealerScore.innerHTML = "";
-                    playerScore.innerHTML="";
+                    playerScore.innerHTML = "";
                     playerScore.appendChild(pScore);
                     dealerScore.appendChild(dScore);
                     }
@@ -189,10 +191,10 @@ function start() {
         playerScore.innerHTML = "";
         playerScore.appendChild(pScore);
         
-        if(player.totalScoreWithAce()==21){
+        if(player.totalScoreWithAce() == 21){
             btnHit.disabled = true;
             btnStand.disabled = true;
-            pScore.textContent = `Hai fatto ${player.totalScoreWithAce()}! Hai vinto!...forse! `;
+            pScore.textContent = `Points: ${player.totalScoreWithAce()}`;
             playerScore.innerHTML = "";
             playerScore.appendChild(pScore);
             dealerCards.removeChild(img4);
@@ -204,7 +206,7 @@ function start() {
             dealerScore.innerHTML = "";
             dealerScore.appendChild(dScore);
             setTimeout(() => {
-            while (dealer.totalScoreWithAce() < 16) {
+                while (dealer.totalScoreWithAce() < 16) {
                     let card = deck.draw();
                     dealer.addCard(card);
                     let img = document.createElement("img");
@@ -213,6 +215,18 @@ function start() {
                     dScore.textContent = dealer.totalScoreWithAce();
                     dealerScore.innerHTML = "";
                     dealerScore.appendChild(dScore);
+                if(dealer.totalScoreWithAce() === 21){
+                    pScore.textContent = `Draw! Points: ${player.totalScoreWithAce()}`;
+                    playerScore.appendChild(pScore);
+                    dScore.textContent = `Draw! Points: ${dealer.totalScoreWithAce()}`;
+                    dealerScore.appendChild(dScore);
+                }else{
+                    audio.play();
+                    pScore.textContent = `You won! Points: ${player.totalScoreWithAce()}`;
+                    playerScore.appendChild(pScore);
+                    dScore.textContent = `I lost! Points: ${dealer.totalScoreWithAce()}`;
+                    dealerScore.appendChild(dScore);
+                }
             }}, 1000);
         }
         if(player.totalScoreWithAce()>21){
@@ -242,17 +256,17 @@ function start() {
             }}, 1000);
             setTimeout(() => {
                 if(dealer.totalScoreWithAce()<21){
-                    pScore.textContent = `Hai perso! Il tuo punteggio ${player.totalScoreWithAce()}`;
+                    pScore.textContent = `Lost! Points: ${player.totalScoreWithAce()}`;
                     playerScore.innerHTML = "";
                     playerScore.appendChild(pScore);
-                    dScore.textContent = `Ho vinto! Il mio punteggio ${dealer.totalScoreWithAce()}`;
+                    dScore.textContent = `Won! Points: ${dealer.totalScoreWithAce()}`;
                     dealerScore.innerHTML = "";
                     dealerScore.appendChild(dScore);
                 }else if (dealer.totalScoreWithAce()>21){
-                    pScore.textContent = `Hai pareggiato! Il tuo punteggio ${player.totalScoreWithAce()}`;
+                    pScore.textContent = `Draw! Points: ${player.totalScoreWithAce()}`;
                     playerScore.innerHTML = "";
                     playerScore.appendChild(pScore);
-                    dScore.textContent = `Abbiamo pareggiato! Il mio punteggio ${dealer.totalScoreWithAce()}`;
+                    dScore.textContent = `Draw! Points: ${dealer.totalScoreWithAce()}`;
                     dealerScore.innerHTML = "";
                     dealerScore.appendChild(dScore);
             }}, 1100);
@@ -281,25 +295,26 @@ function start() {
                 dealerScore.appendChild(dScore);
         }
         setTimeout(() => {
-            if(player.totalScoreWithAce()>dealer.totalScoreWithAce() && player.totalScoreWithAce()<=21){
-                pScore.textContent = `Hai vinto! Il tuo punteggio ${player.totalScoreWithAce()}`;
+            if(player.totalScoreWithAce()>dealer.totalScoreWithAce() || dealer.totalScoreWithAce()>21){
+                audio.play();
+                pScore.textContent = `Won! Points: ${player.totalScoreWithAce()}`;
                 playerScore.innerHTML = "";
                 playerScore.appendChild(pScore);
-                dScore.textContent = `Ho perso! Il mio punteggio ${dealer.totalScoreWithAce()}`;
+                dScore.textContent = `Lost! Points: ${dealer.totalScoreWithAce()}`;
                 dealerScore.innerHTML = "";
                 dealerScore.appendChild(dScore);
             }else if(player.totalScoreWithAce()<dealer.totalScoreWithAce() && dealer.totalScoreWithAce()<=21){
-                pScore.textContent = `Hai perso! Il tuo punteggio ${player.totalScoreWithAce()}`;
+                pScore.textContent = `Lost! Points: ${player.totalScoreWithAce()}`;
                 playerScore.innerHTML = "";
                 playerScore.appendChild(pScore);
-                dScore.textContent = `Ho vinto! Il mio punteggio ${dealer.totalScoreWithAce()}`;
+                dScore.textContent = `Won! Points: ${dealer.totalScoreWithAce()}`;
                 dealerScore.innerHTML = "";
                 dealerScore.appendChild(dScore);
             }else{
-                pScore.textContent = `Hai pareggiato! Il tuo punteggio ${player.totalScoreWithAce()}`;
+                pScore.textContent = `Draw! Points: ${player.totalScoreWithAce()}`;
                 playerScore.innerHTML = "";
                 playerScore.appendChild(pScore);
-                dScore.textContent = `Abbiamo pareggiato! Il mio punteggio ${dealer.totalScoreWithAce()}`;
+                dScore.textContent = `Draw! Points: ${dealer.totalScoreWithAce()}`;
                 dealerScore.innerHTML = "";
                 dealerScore.appendChild(dScore);
         }}, 1000);
@@ -317,5 +332,6 @@ function start() {
         btnHit.disabled = true;
     });
 }
+
 
 document.addEventListener("DOMContentLoaded", start);
