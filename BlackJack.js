@@ -17,8 +17,12 @@ function start() {
     let cardDealSound = document.getElementById("cardDealSound");
     let cardFlip = document.getElementById("cardFlip");
     let shuffle = document.getElementById("shuffle");
-
+    let lostAudio = document.getElementById("playerLoss");
+    lostAudio.play();
+    lostAudio.pause();
+    lostAudio.currentTime=0;
     btnStart.addEventListener("click", function () {
+        lostAudio.currentTime=0;
         shuffle.play();
         music.play();
         music.volume = 0.01;
@@ -94,7 +98,6 @@ function start() {
                 dealerScore.innerHTML = "";
                 dealerScore.appendChild(dScore);
                 setTimeout(() => {
-                    while (dealer.totalScoreWithAce() < 16) {
                         let card = deck.draw();
                         dealer.addCard(card);
                         let img = document.createElement("img");
@@ -115,13 +118,14 @@ function start() {
                             dScore.textContent = `I lost! Points: ${dealer.totalScoreWithAce()}`;
                             dealerScore.appendChild(dScore);
                         }
-                    }
                 }, 1000);
             }
         }, 4001);
     });
 
     btnRestart.addEventListener("click", function () {
+        lostAudio.pause();
+        lostAudio.currentTime=0;
         shuffle.play();
         // audioClick.play();
         audio.pause();
@@ -201,7 +205,6 @@ function start() {
                 dealerScore.innerHTML = "";
                 dealerScore.appendChild(dScore);
                 setTimeout(() => {
-                    while (dealer.totalScoreWithAce() < 16) {
                         let card = deck.draw();
                         dealer.addCard(card);
                         let img = document.createElement("img");
@@ -222,7 +225,6 @@ function start() {
                             dScore.textContent = `I lost! Points: ${dealer.totalScoreWithAce()}`;
                             dealerScore.appendChild(dScore);
                         }
-                    }
                 }, 1000);
             }
         }, 4001);
@@ -282,6 +284,7 @@ function start() {
             }, 1000);
         }
         if (player.totalScoreWithAce() > 21) {
+            lostAudio.play();
             btnHit.disabled = true;
             btnStand.disabled = true;
             pScore.textContent = `Bust! Points: ${player.totalScoreWithAce()}`;
@@ -311,6 +314,7 @@ function start() {
             }, 1000);
             setTimeout(() => {
                 if (dealer.totalScoreWithAce() < 21) {
+                    lostAudio.play();
                     pScore.textContent = `Lost! Points: ${player.totalScoreWithAce()}`;
                     playerScore.innerHTML = "";
                     playerScore.appendChild(pScore);
@@ -363,6 +367,7 @@ function start() {
                 dealerScore.innerHTML = "";
                 dealerScore.appendChild(dScore);
             } else if (player.totalScoreWithAce() < dealer.totalScoreWithAce() && dealer.totalScoreWithAce() <= 21) {
+                lostAudio.play();
                 pScore.textContent = `Lost! Points: ${player.totalScoreWithAce()}`;
                 playerScore.innerHTML = "";
                 playerScore.appendChild(pScore);
@@ -382,6 +387,8 @@ function start() {
 
     btnStop.addEventListener("click", function () {
         // audioClick.play();
+        lostAudio.pause();
+        lostAudio.currentTime=0;
         audio.pause();
         music.pause();
         playerCards.innerHTML = "";
