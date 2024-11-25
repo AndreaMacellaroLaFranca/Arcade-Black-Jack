@@ -217,9 +217,9 @@ function start() {
                             dealerScore.appendChild(dScore);
                         } else {
                             audio.play();
-                            pScore.textContent = `Won! Points: ${player.totalScoreWithAce()}`;
+                            pScore.textContent = `You won! Points: ${player.totalScoreWithAce()}`;
                             playerScore.appendChild(pScore);
-                            dScore.textContent = `Lost! Points: ${dealer.totalScoreWithAce()}`;
+                            dScore.textContent = `I lost! Points: ${dealer.totalScoreWithAce()}`;
                             dealerScore.appendChild(dScore);
                         }
                     }
@@ -243,7 +243,7 @@ function start() {
         if (player.totalScoreWithAce() == 21) {
             btnHit.disabled = true;
             btnStand.disabled = true;
-            pScore.textContent = `Points: ${player.totalScoreWithAce()}`;
+            pScore.textContent = `Won! Points: ${player.totalScoreWithAce()}`;
             playerScore.innerHTML = "";
             playerScore.appendChild(pScore);
             dealerCards.removeChild(img4);
@@ -252,7 +252,7 @@ function start() {
             img4.src = `images/${card4.image}`;
             dealerCards.appendChild(img4);
             cardFlip.play();
-            dScore.textContent = dealer.totalScoreWithAce();
+            dScore.textContent = `Lost! Points: ${dealer.totalScoreWithAce()}`;
             dealerScore.innerHTML = "";
             dealerScore.appendChild(dScore);
             setTimeout(() => {
