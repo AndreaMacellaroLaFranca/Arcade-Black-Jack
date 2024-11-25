@@ -17,11 +17,7 @@ function start() {
 
     btnStart.addEventListener("click", function () {
         music.play();
-<<<<<<< HEAD
         music.volume = 0.1;
-=======
-        music.volume = 0.05;
->>>>>>> 7ceca90b9f88d3baa4f849fa9810c42184946cb3
         audioClick.play();
         btnStart.disabled = true;
         delayBtn(btnHit, btnStop, btnStand, btnRestart);
