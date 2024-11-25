@@ -14,10 +14,10 @@ function start() {
     let audio = document.getElementById("audio");
     let audioClick = document.getElementById("audio1");
     let music = document.getElementById("audio2");
-    
+
     btnStart.addEventListener("click", function () {
         music.play();
-        music.volume -=0.9;
+        music.volume = 0.1;
         audioClick.play();
         btnStart.disabled = true;
         delayBtn(btnHit, btnStop, btnStand, btnRestart);
