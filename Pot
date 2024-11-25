@@ -1,0 +1,10 @@
+function Pot(){
+    this.potValue = 1000;
+}
+
+Pot.prototype.makeABet = function(bet){
+    this.potValue = this.potValue-bet;
+}
+Pot.prototype.winTheBet = function(bet){
+    this.potValue = this.potValue+bet*2;
+}

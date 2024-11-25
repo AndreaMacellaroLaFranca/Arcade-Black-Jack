@@ -8,7 +8,7 @@ function start() {
     const playerCards = document.getElementById("playerCards");
     const dealerScore = document.getElementById("dealerScore");
     const playerScore = document.getElementById("playerScore");
-    let player, dealer, deck;
+    let player, dealer, deck, bet;
     let pScore = document.createElement("p");
     let dScore = document.createElement("p");
     let audio = document.getElementById("audio");
@@ -18,14 +18,13 @@ function start() {
     let cardFlip = document.getElementById("cardFlip");
     let shuffle = document.getElementById("shuffle");
     let lostAudio = document.getElementById("playerLoss");
-    lostAudio.play();
-    lostAudio.pause();
-    lostAudio.currentTime=0;
+    
     btnStart.addEventListener("click", function () {
+        //bet = new Pot();
         lostAudio.currentTime=0;
         shuffle.play();
         music.play();
-        music.volume = 0.01;
+        music.volume = 0.5;
         // audioClick.play();
         btnStart.disabled = true;
         delayBtn(btnHit, btnStop, btnStand, btnRestart);
