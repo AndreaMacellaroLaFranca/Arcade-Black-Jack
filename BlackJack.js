@@ -332,6 +332,7 @@ function start() {
     btnStop.addEventListener("click", function () {
         audioClick.play();
         audio.pause();
+        music.pause();
         playerCards.innerHTML = ""; 
         dealerCards.innerHTML = ""; 
         dealerScore.innerHTML = "";
