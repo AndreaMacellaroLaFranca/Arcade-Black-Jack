@@ -16,8 +16,10 @@ function start() {
     let music = document.getElementById("audio2");
     let cardDealSound = document.getElementById("cardDealSound");
     let cardFlip = document.getElementById("cardFlip");
+    let shuffle = document.getElementById("shuffle");
 
     btnStart.addEventListener("click", function () {
+        shuffle.play();
         music.play();
         music.volume = 0.01;
         // audioClick.play();
@@ -98,7 +100,6 @@ function start() {
                         let img = document.createElement("img");
                         img.src = `images/${card.image}`;
                         dealerCards.appendChild(img);
-                        cardDealSound.play();
                         dScore.textContent = dealer.totalScoreWithAce();
                         dealerScore.innerHTML = "";
                         dealerScore.appendChild(dScore);
@@ -121,6 +122,7 @@ function start() {
     });
 
     btnRestart.addEventListener("click", function () {
+        shuffle.play();
         // audioClick.play();
         audio.pause();
         deactivateBtn(btnHit, btnStop, btnStand, btnRestart);
@@ -205,7 +207,6 @@ function start() {
                         let img = document.createElement("img");
                         img.src = `images/${card.image}`;
                         dealerCards.appendChild(img);
-                        cardDealSound.play();
                         dScore.textContent = dealer.totalScoreWithAce();
                         dealerScore.innerHTML = "";
                         dealerScore.appendChild(dScore);
