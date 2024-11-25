@@ -17,7 +17,7 @@ function start() {
     
     btnStart.addEventListener("click", function () {
         music.play();
-        music.volume -=0.9;
+        music.volume = 0.05;
         audioClick.play();
         btnStart.disabled = true;
         delayBtn(btnHit, btnStop, btnStand, btnRestart);
@@ -344,6 +344,5 @@ function start() {
         btnHit.disabled = true;
     });
 }
-
 
 document.addEventListener("DOMContentLoaded", start);
