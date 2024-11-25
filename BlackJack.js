@@ -185,9 +185,9 @@ function start() {
                             dealerScore.appendChild(dScore);
                         } else {
                             audio.play();
-                            pScore.textContent = `You won! Points: ${player.totalScoreWithAce()}`;
+                            pScore.textContent = `Won! Points: ${player.totalScoreWithAce()}`;
                             playerScore.appendChild(pScore);
-                            dScore.textContent = `I lost! Points: ${dealer.totalScoreWithAce()}`;
+                            dScore.textContent = `Lost! Points: ${dealer.totalScoreWithAce()}`;
                             dealerScore.appendChild(dScore);
                         }
                     }
@@ -238,9 +238,9 @@ function start() {
                     dealerScore.appendChild(dScore);
                 }else{
                     audio.play();
-                    pScore.textContent = `You won! Points: ${player.totalScoreWithAce()}`;
+                    pScore.textContent = `Won! Points: ${player.totalScoreWithAce()}`;
                     playerScore.appendChild(pScore);
-                    dScore.textContent = `I lost! Points: ${dealer.totalScoreWithAce()}`;
+                    dScore.textContent = `Lost! Points: ${dealer.totalScoreWithAce()}`;
                     dealerScore.appendChild(dScore);
                 }
             }}, 1000);
@@ -248,7 +248,7 @@ function start() {
         if(player.totalScoreWithAce()>21){
             btnHit.disabled = true;
             btnStand.disabled = true;
-            pScore.textContent = `Lord have mercy i'm about to bust with ${player.totalScoreWithAce()} points!`;
+            pScore.textContent = `Bust! Points: ${player.totalScoreWithAce()}`;
             playerScore.innerHTML = "";
             playerScore.appendChild(pScore);
             dealerCards.removeChild(img4);
