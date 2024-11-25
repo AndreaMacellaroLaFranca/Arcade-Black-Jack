@@ -248,7 +248,7 @@ function start() {
         if(player.totalScoreWithAce()>21){
             btnHit.disabled = true;
             btnStand.disabled = true;
-            pScore.textContent = `Hai sballato! Il tuo punteggio ${player.totalScoreWithAce()} e spera che il dealer sballi a sua volta!`;
+            pScore.textContent = `Lord have mercy i'm about to bust with ${player.totalScoreWithAce()} points!`;
             playerScore.innerHTML = "";
             playerScore.appendChild(pScore);
             dealerCards.removeChild(img4);
