@@ -63,10 +63,10 @@ function start() {
         }, 4000);
         
         setTimeout(() => {
-            if (player.totalScoreWithAce() === 21) {
+            if (player.totalScoreWithAce() == 21) {
                 btnHit.disabled = true;
                 btnStand.disabled = true;
-                pScore.textContent = `BlackJack <3`;
+                pScore.textContent = `Points: ${player.totalScoreWithAce()}`;
                 playerScore.innerHTML = "";
                 playerScore.appendChild(pScore);
                 dealerCards.removeChild(img4);
@@ -74,27 +74,32 @@ function start() {
                 dealer.addCard(card4);
                 img4.src = `images/${card4.image}`;
                 dealerCards.appendChild(img4);
-
                 dScore.textContent = dealer.totalScoreWithAce();
                 dealerScore.innerHTML = "";
                 dealerScore.appendChild(dScore);
                 setTimeout(() => {
-                        if(dealer.totalScoreWithAce() === 21){
-                            dScore.textContent = `BlackJack Draw!`;
-                            pScore.textContent = 'Blackjack Draw...';
-                            dealerScore.innerHTML = "";
-                            playerScore.innerHTML="";
-                            playerScore.appendChild(pScore);
-                            dealerScore.appendChild(dScore);
-                        }else{
-                        audio.play();
-                        dScore.textContent = `Brother ew`;
-                        pScore.textContent = 'Blackjack Bitch!';
+                    while (dealer.totalScoreWithAce() < 16) {
+                        let card = deck.draw();
+                        dealer.addCard(card);
+                        let img = document.createElement("img");
+                        img.src = `images/${card.image}`;
+                        dealerCards.appendChild(img);
+                        dScore.textContent = dealer.totalScoreWithAce();
                         dealerScore.innerHTML = "";
-                        playerScore.innerHTML = "";
-                        playerScore.appendChild(pScore);
                         dealerScore.appendChild(dScore);
+                        if (dealer.totalScoreWithAce() === 21) {
+                            pScore.textContent = `Draw! Points: ${player.totalScoreWithAce()}`;
+                            playerScore.appendChild(pScore);
+                            dScore.textContent = `Draw! Points: ${dealer.totalScoreWithAce()}`;
+                            dealerScore.appendChild(dScore);
+                        } else {
+                            audio.play();
+                            pScore.textContent = `You won! Points: ${player.totalScoreWithAce()}`;
+                            playerScore.appendChild(pScore);
+                            dScore.textContent = `I lost! Points: ${dealer.totalScoreWithAce()}`;
+                            dealerScore.appendChild(dScore);
                         }
+                    }
                 }, 1000);
             }
         }, 4001);
@@ -149,10 +154,10 @@ function start() {
         }, 4000);
 
         setTimeout(() => {
-            if (player.totalScoreWithAce() === 21) {
+            if (player.totalScoreWithAce() == 21) {
                 btnHit.disabled = true;
                 btnStand.disabled = true;
-                pScore.textContent = `BlackJack <3 `;
+                pScore.textContent = `Points: ${player.totalScoreWithAce()}`;
                 playerScore.innerHTML = "";
                 playerScore.appendChild(pScore);
                 dealerCards.removeChild(img4);
@@ -160,30 +165,33 @@ function start() {
                 dealer.addCard(card4);
                 img4.src = `images/${card4.image}`;
                 dealerCards.appendChild(img4);
-
                 dScore.textContent = dealer.totalScoreWithAce();
                 dealerScore.innerHTML = "";
                 dealerScore.appendChild(dScore);
-            
                 setTimeout(() => {
-                    if(dealer.totalScoreWithAce() === 21){
-                        dScore.textContent = `BlackJack Draw!`;
-                        pScore.textContent = 'Blackjack Draw...';
+                    while (dealer.totalScoreWithAce() < 16) {
+                        let card = deck.draw();
+                        dealer.addCard(card);
+                        let img = document.createElement("img");
+                        img.src = `images/${card.image}`;
+                        dealerCards.appendChild(img);
+                        dScore.textContent = dealer.totalScoreWithAce();
                         dealerScore.innerHTML = "";
-                        playerScore.innerHTML = "";
-                        playerScore.appendChild(pScore);
                         dealerScore.appendChild(dScore);
-                    }else{
-                    audio.play();
-                    dScore.textContent = `Brother ew`;
-                    pScore.textContent = 'Blackjack Bitch!';
-                    dealerScore.innerHTML = "";
-                    playerScore.innerHTML = "";
-                    playerScore.appendChild(pScore);
-                    dealerScore.appendChild(dScore);
+                        if (dealer.totalScoreWithAce() === 21) {
+                            pScore.textContent = `Draw! Points: ${player.totalScoreWithAce()}`;
+                            playerScore.appendChild(pScore);
+                            dScore.textContent = `Draw! Points: ${dealer.totalScoreWithAce()}`;
+                            dealerScore.appendChild(dScore);
+                        } else {
+                            audio.play();
+                            pScore.textContent = `You won! Points: ${player.totalScoreWithAce()}`;
+                            playerScore.appendChild(pScore);
+                            dScore.textContent = `I lost! Points: ${dealer.totalScoreWithAce()}`;
+                            dealerScore.appendChild(dScore);
+                        }
                     }
-            }, 1000);
-                
+                }, 1000);
             }
         }, 4001);
     });
