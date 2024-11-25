@@ -11,12 +11,12 @@ function Deck() {
         this.cards.push(new Card('K', suit, `K-${suit}.png`));
     };
 }
-Deck.prototype.shuffle = function (cards) {
-    for (let i = 0; i < this.cards.length; i++) {
-        let shuffle = Math.floor(Math.random() * (this.cards.length));
+Deck.prototype.shuffle = function () {
+    for (let i = this.cards.length - 1; i > 0; i--) {
+        let shuffle = Math.floor(Math.random() * (i + 1)); // Indice casuale tra 0 e i
         [this.cards[i], this.cards[shuffle]] = [this.cards[shuffle], this.cards[i]];
-    };
-}
+    }
+};
 Deck.prototype.draw = function () {
     return this.cards.pop();
 }
